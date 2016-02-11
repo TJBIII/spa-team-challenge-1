@@ -1,0 +1,44 @@
+{
+  "contactBook": {
+    "a": [
+        {
+          "last_name": "Anderson",
+          "first_name": "John"
+        },
+        {
+          "business": "Apple Store"
+        },
+        {
+          "last_name": "Ansari",
+          "first_name": "Aziz"
+        }
+      ],
+
+    "b": [
+        {
+          "last_name": "Bolt",
+          "first_name": "Usain"
+        },
+        {
+          "business": "Borders Books"
+        },
+        {
+          "business": "Best Buy"
+        }
+      ],
+
+    "c": [
+        {
+          "last_name": "Curry",
+          "first_name": "Steph"
+        },
+        {
+          "business": "Costco"
+        },
+        {
+          "last_name": "Capp",
+          "first_name": "Trey"
+        }
+      ]
+  }
+}
