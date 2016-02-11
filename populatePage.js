@@ -2,18 +2,8 @@ function populatePage (contacts) {
   console.log("contacts:", contacts);
   var containerEl = document.getElementById("container");
   
-  //--- Loop through the JSON and build up the DOM --//
-  // for (var i = 0; i < inventory.length; i++) {
-    
-  // var contentString = "";
-    
-
-  //   containerEl.innerHTML += contentString;
-
-    
-  // };
-
-  //ContactBook.activateEvents();
+  //Initialize DOM with Hidden Classes - only first class will be displayed//
+  
 }
 
 
