@@ -2,21 +2,23 @@ var ContactBook = (function () {
   var contactBookArray = [];
 
   return {
-    getContact: function () {
-
+    getContacts: function () {
+      return contactBookArray;
     },
-    loadContact: function (callback) {
-      var contactLoader = new XMLHttpRequest();
 
-      contactLoader.addEventListener("load", function () {
-        var contactBookData = JSON.parse(this.responseText);
-        contactBookArray = carInventoryData.cars;
+    loadContact: function (callback) {
+      var contactRequest = new XMLHttpRequest();
+
+      contactRequest.addEventListener("load", function () {
+        var contactBookData = JSON.parse(contactRequest.responseText);
+        contactBookArray = contactBookData.contactBook;
+        //console.log("contactBookArray", contactBookArray);
 
         callback(contactBookArray);
 
       });
-      inventoryLoader.open("GET", "contactBook.json")
-      inventoryLoader.send();
+      contactRequest.open("GET", "contactBook.json")
+      contactRequest.send();
     }
   };
 
