@@ -5,7 +5,11 @@ function populatePage (contacts) {
   var containerElString = "";
   //Initialize DOM with Hidden Classes - only first class will be displayed//
   for (var letter in contacts) {
-    containerElString += `<div class="row" id="${letter}">`;
+    if (letter === "a") {
+      containerElString += `<div class="row" id="${letter}">`;
+    } else {
+      containerElString += `<div class="row hidden" id="${letter}">`;
+    }
       for (var i = 0; i < contacts[letter].length; i++) {
         var name = (contacts[letter][i].last_name || contacts[letter][i].business);
         console.log("name", name);
@@ -17,6 +21,7 @@ function populatePage (contacts) {
   containerEl.innerHTML = containerElString;
 }
 
+document.getElementById("toolbarContainer").addEventListener("click", function(){ContactBook.refreshDOM(event)});
 
 // Load the inventory and send a callback function to be
 // invoked after the process is complete
