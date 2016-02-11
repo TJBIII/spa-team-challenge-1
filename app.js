@@ -14,6 +14,8 @@ var ContactBook = (function () {
         contactBookArray = contactBookData.contactBook;
         //console.log("contactBookArray", contactBookArray);
 
+        //initialize toolbar
+        ContactBook.refreshToolbar();
         callback(contactBookArray);
 
       });
@@ -23,4 +25,3 @@ var ContactBook = (function () {
   };
 
 })();
-
