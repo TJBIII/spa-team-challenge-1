@@ -25,26 +25,25 @@ var ContactBook = (function (cb) {
   cb.refreshDOM = function(event){
     var contacts = ContactBook.getContacts();
     var letterToMakeVisible = event.target.innerHTML.toLowerCase();
-    console.log("letterToMakeVisible", letterToMakeVisible);
-    var containerEl = document.getElementById("container");
-    var containerElString = "";
-    for (var letter in contacts) {
-      if (letter === letterToMakeVisible) {
-        containerElString += `<div class="row" id="${letter}">`;
-        for (var i = 0; i < contacts[letter].length; i++) {
-          var name = (contacts[letter][i].last_name || contacts[letter][i].business);
-          console.log("name", name);
-          containerElString += `<div class="col-md-12">${name}</div>`;
-        };
-        containerElString += `</div>`;
-      };
-      containerEl.innerHTML = containerElString;
-    };
 
-    containerEl = containerElString;
+    //get div we want to show
+    var letterEl = document.getElementById(letterToMakeVisible);
+
+    //get an array of all the letter divs in the DOM
+    var letterGroups = document.getElementsByClassName("row letter-group");
+
+    var currentDiv;
+
+    for (var i = 0; i < letterGroups.length; i++) {
+      currentDiv = letterGroups[i];
+      if (currentDiv.className.indexOf("hidden") < 0){
+        currentDiv.classList.add("hidden");
+      } 
+    }
+
+    //remove hidden class from div we want to make visible
+    letterEl.classList.remove("hidden");
   };
-
-
 
 
   return cb;
