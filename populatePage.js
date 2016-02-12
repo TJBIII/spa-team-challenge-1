@@ -6,9 +6,9 @@ function populatePage (contacts) {
   //Initialize DOM with Hidden Classes - only first class will be displayed//
   for (var letter in contacts) {
     if (letter === "a") {
-      containerElString += `<div class="row" id="${letter}">`;
+      containerElString += `<div class="row letter-group" id="${letter}">`;
     } else {
-      containerElString += `<div class="row hidden" id="${letter}">`;
+      containerElString += `<div class="row letter-group hidden" id="${letter}">`;
     }
       for (var i = 0; i < contacts[letter].length; i++) {
         var name = (contacts[letter][i].last_name || contacts[letter][i].business);
