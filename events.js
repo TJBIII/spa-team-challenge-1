@@ -4,6 +4,9 @@ var submitButton = document.getElementById("submitButton");
 var findButton = document.getElementById("findRadio");
 var addButton = document.getElementById("addRadio");
 
+var addContactEl = document.getElementById("addContact");
+
+
 
 var submitText = "Submit";
 function radioCheck () {
@@ -15,6 +18,8 @@ function radioCheck () {
 	} else if (addButton.checked) {
 		console.log("add button checked");
 		submitText = "Add";
+  	addContactEl.classList.remove("hidden");
+  	ContactBook.hideAllLetterDivs();
 	}
 	submitButton.innerHTML = submitText;
 };
@@ -24,3 +29,10 @@ submitButton.innerHTML = submitText;
 
 findButton.addEventListener("change", radioCheck);
 addButton.addEventListener("change", radioCheck);
+
+
+submitButton.addEventListener("click", function(event) {
+	if (event.target.innerHTML === "Add"){
+		ContactBook.addContact()
+	}
+})
