@@ -26,8 +26,8 @@ var ContactBook = (function () {
     sortGroup : function (arr) {
       //sort ann array of contact objects by the last_name/business name
       arr.sort(function(a, b){
-        console.log("a", a);
-        console.log("b", b);
+        // console.log("a", a);
+        // console.log("b", b);
          var nameA = (a.last_name || a.business).toLowerCase();
          var nameB = (b.last_name || b.business).toLowerCase();
          if (nameA < nameB) //sort string ascending
