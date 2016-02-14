@@ -132,11 +132,12 @@ var ContactBook = (function (cb) {
     if (!(letter in contacts)){
       //add key for new letter and assign the value of an array with the newContact object inside
       contacts[letter] = [newContact];
-      ContactBook.hideAllLetterDivs;
+      ContactBook.hideAllLetterDivs();
       ContactBook.createNewLetterGroup(letter);
     } else {
       //push newContact into already existing array 
       contacts[letter].push(newContact);
+      ContactBook.hideAllLetterDivs();
       ContactBook.replaceLetterGroup(letter); 
     }
 
