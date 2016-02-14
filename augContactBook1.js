@@ -85,7 +85,7 @@ var ContactBook = (function (cb) {
 
     var letterEl = document.getElementById(letter);
 
-    var group = contacts[letter];
+    var group = ContactBook.sortGroup(contacts[letter]);
 
     var containerElString = "";
 
