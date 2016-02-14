@@ -55,7 +55,47 @@ var ContactBook = (function (cb) {
         currentDiv.classList.add("hidden");
       } 
     }
-  }
+  };
+
+  cb.createNewLetterGroup = function (letter){
+    var contacts = ContactBook.getContacts();
+
+    var containerEl = document.getElementById("container");
+
+    var group = contacts[letter];
+
+    var containerElString = "";
+    containerElString += `<div class="row letter-group" id="${letter}">`;
+    for (var i = 0; i < contacts[letter].length; i++) {
+      var name = (contacts[letter][i].last_name || contacts[letter][i].business);
+      console.log("name", name);
+      containerElString += `<div class="col-md-12">${name}</div>`;
+    };
+    containerElString += `</div>`;
+
+    containerEl.innerHTML += containerElString;
+  };
+
+
+  cb.replaceLetterGroup = function (letter) {
+    var contacts = ContactBook.getContacts();
+
+    var letterEl = document.getElementById(letter);
+
+    var group = contacts[letter];
+
+    var containerElString = "";
+
+    for (var i = 0; i < group.length; i++) {
+        var name = (group[i].last_name || group[i].business);
+        containerElString += `<div class="col-md-12">${name}</div>`;
+      }
+    letterEl.innerHTML = containerElString;
+
+    //show new group with most recently added contact
+    letterEl.classList.remove("hidden");
+  };
+
 
   cb.addContact = function(){
 
@@ -89,14 +129,25 @@ var ContactBook = (function (cb) {
     if (!(letter in contacts)){
       //add key for new letter and assign the value of an array with the newContact object inside
       contacts[letter] = [newContact];
+      ContactBook.hideAllLetterDivs;
+      ContactBook.createNewLetterGroup(letter);
     } else {
       contacts[letter].push(newContact);
+
+      ContactBook.replaceLetterGroup(letter);
+      
     }
 
     ContactBook.refreshToolbar();
 
+    addNameEl.value = "";
+    if(firstName){
+      firstNameEl.value = "";
+    }
+
     console.log("contacts:", contacts);
-  };    
+  };   
+
 
 
   return cb;
