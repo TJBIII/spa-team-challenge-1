@@ -16,7 +16,11 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <div class="navbar-form navbar-left" role="search">
 	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Search">
+	          <input type="text" class="form-control" placeholder="Search" id="search">
+              <div id="addContact" class="hidden">
+                <input type="text" id="addName" placeholder="Last Name or Business Name">
+                <input type="text" id="addFirst" placeholder="First Name">
+              </div>
 	        </div>
 	        <button type="submit" id="submitButton" class="btn btn-default">Find</button>
 		      <ul class="nav navbar-nav">
@@ -33,21 +37,29 @@
 
 	<!-- Bootstrap Navbar End -->
 
-  <!-- Bootstrap Alphabet Toolbar Start -->
-  
-  <div id="toolbarContainer">
-  	<div class="btn-toolbar">
-	    <div class="btn-group btn-group-lg">
-	      <button class="btn btn-default">A</button>
-	      <button class="btn btn-default">B</button>
-	      <button class="btn btn-default">C</button>
-	      <button class="btn btn-default">D</button>
-	      <button class="btn btn-default">E</button>
-	    </div>
-  	</div>
-  </div>
 
-	<!-- Bootstrap Alphabet Toolbar End  -->
+  <!-- Bootstrap Alphabet Toolbar Start -->
+  <div id="toolbarContainer">
+    <div class="btn-toolbar">
+      <div class="btn-group btn-group-lg">
+        <button class="btn btn-default">A</button>
+        <button class="btn btn-default">B</button>
+        <button class="btn btn-default">C</button>
+        <button class="btn btn-default">D</button>
+        <button class="btn btn-default">E</button>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap Alphabet Toolbar End  -->
+
+  <div id="addContact" class="hidden">
+    <div class="container">
+      <div class="col-md-12">
+        <input type="text" id="addName" placeholder="Last Name or Business Name">
+        <input type="text" id="addFirst" placeholder="First Name">
+      </div>
+    </div>
+  </div>
 
 	<!-- Body Output Container Div -->
 	<div id="container" class="container"></div>

@@ -40,7 +40,11 @@
           "first_name": "Trey"
         }
       ],
-      "e": [{}],
-      "d": [{}]
+
+    "l": [
+        {
+          "business": "Lego Store"
+        }
+      ]
   }
 }
