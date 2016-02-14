@@ -177,30 +177,38 @@ var ContactBook = (function (cb) {
     // settings up to search for first three letters of user's input against all "main names" in current contacts
     var searchLetters = userSearch.slice(0, 3).toLowerCase();
     console.log("firstLetter: ", firstLetter);
-    var letterGroup = contacts[firstLetter];
+    var letterGroup = (contacts[firstLetter]);
 
     // results content for DOM div associated with letter
     var containerElString = "";
     // matching letter div
     var letterEl = document.getElementById(firstLetter);
 
-    for (var i = 0; i < letterGroup.length; i++) {
-        var name = (letterGroup[i].last_name || letterGroup[i].business);
-        if (name.toLowerCase().includes(searchLetters)) {
-          console.log("result found: ", name);
-          containerElString += `<div class="col-md-12">${name}</div>`;
+    if (contacts[firstLetter]) {
+      for (var i = 0; i < letterGroup.length; i++) {
+          var name = (letterGroup[i].last_name || letterGroup[i].business);
+          if (name.toLowerCase().includes(searchLetters)) {
+            console.log("result found: ", name);
+            containerElString += `<div class="col-md-12">${name}</div>`;
+          }
         }
-      }
-      if (containerElString === "") {
-        console.log("No Results Found");
-      };
-    letterEl.classList.remove("hidden");
-    letterEl.innerHTML = containerElString;
+        if (containerElString === "") {
+          containerElString += `<div class="col-md-12">No Results Found in ${firstLetter.toUpperCase()}</div>`;
+          console.log("No Results Found in Existing Letter");
+        };
+      letterEl.classList.remove("hidden");
+      letterEl.innerHTML = containerElString;
 
-    // use refreshToolbar with optional argument firstLetter to only populate first letter Tab of string result
-    ContactBook.refreshToolbar(firstLetter);
+      // use refreshToolbar with optional argument firstLetter to only populate first letter Tab of string result
+      ContactBook.refreshToolbar(firstLetter);
+      
+    // A few failure condition outputs
+    } else {
+      console.log("No Results Found for First Letter");
+      var containerEl = document.getElementById("container");
+      containerEl.innerHTML = `<div class="col-md-12">No ${firstLetter.toUpperCase()} Entries to Search Through</div>`;
+    }
 
-    // If no results, should show "No Results Found" in body
   };   
 
 
