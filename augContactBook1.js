@@ -148,6 +148,42 @@ var ContactBook = (function (cb) {
     }
 
     console.log("contacts:", contacts);
+  };
+
+  // takes user input and compares it to Last/Business name of all items in current contacts array
+  cb.searchContacts = function() {
+
+    var contacts = ContactBook.getContacts();
+    // store user value
+    var userSearch = searchEl.value;
+
+    if (!userSearch){
+      alert('Enter Valid Search Name');
+      return;
+    }
+
+    var firstLetter = userSearch[0].toLowerCase();
+    // settings up to search for first three letters of user's input against all "main names" in current contacts
+    var searchLetters = userSearch.slice(0, 3).toLowerCase();
+    console.log("firstLetter: ", firstLetter);
+    var letterGroup = contacts[firstLetter];
+
+    var containerElString = "";
+
+    for (var i = 0; i < letterGroup.length; i++) {
+        var name = (letterGroup[i].last_name || letterGroup[i].business);
+        if (name.toLowerCase().includes(searchLetters)) {
+          console.log("result found: ", name);
+          containerElString += `<div class="col-md-12">${name}</div>`;
+        }
+      }
+      if (containerElString === "") {
+        console.log("No Results Found");
+      };
+    
+    // letterEl.innerHTML = containerElString;
+    
+    // If no results, should show "No Results Found" in body
   };   
 
 

@@ -9,6 +9,8 @@ var searchEl = document.getElementById("search");
 
 
 var submitText = "Submit";
+submitButton.innerHTML = submitText;
+
 function radioCheck () {
 	console.log("radioCheck init");
 	if (findButton.checked) {
@@ -19,7 +21,6 @@ function radioCheck () {
   	addContactEl.classList.add("hidden");
 
 		submitText = "Find";
-		// Code for find function
 		
 	} else if (addButton.checked) {
 		console.log("add button checked");
@@ -35,14 +36,20 @@ function radioCheck () {
 };
 
 
-submitButton.innerHTML = submitText;
-
 findButton.addEventListener("change", radioCheck);
 addButton.addEventListener("change", radioCheck);
+// Document load in find mode
+document.addEventListener("DOMContentLoaded", radioCheck);
 
 
 submitButton.addEventListener("click", function(event) {
 	if (event.target.innerHTML === "Add"){
 		ContactBook.addContact();
+	} else if (event.target.innerHTML === "Find") {
+		// Initially Hide Page Content
+  	ContactBook.hideAllLetterDivs();
+		// Compares user input to business/last names and changes the DOM so only the associated letter and contact appears
+  	ContactBook.searchContacts();
+		
 	}
 })
