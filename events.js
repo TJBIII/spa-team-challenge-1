@@ -15,7 +15,7 @@ function radioCheck () {
 		console.log("find button checked");
 
 		//show search input, hide addContact inputs
-		search.classList.remove("hidden");
+		searchEl.classList.remove("hidden");
   	addContactEl.classList.add("hidden");
 
 		submitText = "Find";
@@ -26,7 +26,7 @@ function radioCheck () {
 		submitText = "Add";
 
 		//hide search input, show addContact inputs
-  	search.classList.add("hidden");
+  	searchEl.classList.add("hidden");
   	addContactEl.classList.remove("hidden");
 
   	ContactBook.hideAllLetterDivs();
