@@ -48,6 +48,7 @@ var ContactBook = (function (cb) {
 
 
   cb.hideAllLetterDivs = function(){
+    //adds the class 'hidden' to all letter group divs
     var currentDiv;
     for (var i = 0; i < letterGroups.length; i++) {
       currentDiv = letterGroups[i];
@@ -58,6 +59,7 @@ var ContactBook = (function (cb) {
   };
 
   cb.createNewLetterGroup = function (letter){
+    //creates a new letter group div in the container for when adding a contact that starts with a letter not previously present in contacts
     var contacts = ContactBook.getContacts();
 
     var containerEl = document.getElementById("container");
@@ -78,6 +80,7 @@ var ContactBook = (function (cb) {
 
 
   cb.replaceLetterGroup = function (letter) {
+    //rebuilds a letter group for when a new contact is added
     var contacts = ContactBook.getContacts();
 
     var letterEl = document.getElementById(letter);
@@ -132,10 +135,9 @@ var ContactBook = (function (cb) {
       ContactBook.hideAllLetterDivs;
       ContactBook.createNewLetterGroup(letter);
     } else {
+      //push newContact into already existing array 
       contacts[letter].push(newContact);
-
-      ContactBook.replaceLetterGroup(letter);
-      
+      ContactBook.replaceLetterGroup(letter); 
     }
 
     ContactBook.refreshToolbar();
