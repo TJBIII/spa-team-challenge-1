@@ -7,6 +7,8 @@ var addButton = document.getElementById("addRadio");
 var addContactEl = document.getElementById("addContact");
 var searchEl = document.getElementById("search");
 
+var errorSection;
+
 
 var submitText = "Submit";
 submitButton.innerHTML = submitText;
@@ -50,6 +52,7 @@ submitButton.addEventListener("click", function(event) {
   	ContactBook.hideAllLetterDivs();
 		// Compares user input to business/last names and changes the DOM so only the associated letter and contact appears
   	ContactBook.searchContacts();
+  	this.blur();
 		
 	}
 })
