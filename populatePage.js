@@ -26,6 +26,9 @@ function populatePage (contacts) {
     };
     containerElString += `</div>`;
   }
+
+  // Add Error Section
+  containerElString += `<div id="errorSection"></div>`;
     
   containerEl.innerHTML = containerElString;
 }

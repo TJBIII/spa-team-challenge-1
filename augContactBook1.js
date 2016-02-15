@@ -49,7 +49,13 @@ var ContactBook = (function (cb) {
       currentDiv = letterGroups[i];
       if (currentDiv.className.indexOf("hidden") < 0){
         currentDiv.classList.add("hidden");
-      } 
+      }
+    }
+    // Hide Error Div as well
+    var errorDiv = document.getElementById("errorDiv");
+    console.log("errorDiv: ", errorDiv);
+    if (errorDiv) {
+      errorDiv.classList.add("hidden");
     }
 
     //remove hidden class from div we want to make visible
@@ -179,6 +185,9 @@ var ContactBook = (function (cb) {
     console.log("firstLetter: ", firstLetter);
     var letterGroup = (contacts[firstLetter]);
 
+    // Section for errors, should only hold 1 error is redefined any time there is an error (not +=)
+    var errorContent = "";
+
     // results content for DOM div associated with letter
     var containerElString = "";
     // matching letter div
@@ -192,23 +201,34 @@ var ContactBook = (function (cb) {
             containerElString += `<div class="col-md-12">${name}</div>`;
           }
         }
-        if (containerElString === "") {
-          containerElString += `<div class="col-md-12">No Results Found in ${firstLetter.toUpperCase()}</div>`;
-          console.log("No Results Found in Existing Letter");
-        };
+        // if (containerElString === "") {
+        //   containerElString += `<div class="col-md-12">No Results Found in ${firstLetter.toUpperCase()}</div>`;
+        //   console.log("No Results Found in Existing Letter");
+        // };
       letterEl.classList.remove("hidden");
       letterEl.innerHTML = containerElString;
 
       // use refreshToolbar with optional argument firstLetter to only populate first letter Tab of string result
-      ContactBook.refreshToolbar(firstLetter);
+      ContactBook.refreshToolbar(); // Removed optional parameter so the entire bar shows instead of the letter (easier to return to initial functionality state)
       
-    // A few failure condition outputs
+    // failure condition output
     } else {
-      console.log("No Results Found for First Letter");
-      var containerEl = document.getElementById("container");
-      containerEl.innerHTML = `<div class="col-md-12">No ${firstLetter.toUpperCase()} Entries to Search Through</div>`;
-    }
+      var error = `<div class="panel panel-default" id="errorDiv">
+                        <div class="panel-body">
+                          No Results Found for '${userSearch}'
+                        </div>
+                      </div>`;
 
+      console.log("No Results Found for First Letter");
+      // var containerEl = document.getElementById("container");
+      // errorSection.innerHTML = "";
+      console.log("errorSection: ", errorSection);
+      errorContent = error;
+    }
+  errorSection = document.getElementById("errorSection");
+  errorSection.innerHTML = errorContent;
+  searchEl.value = "";
+    
   };   
 
 
