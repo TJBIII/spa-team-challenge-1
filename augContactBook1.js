@@ -167,73 +167,7 @@ var ContactBook = (function (cb) {
     console.log("contacts:", contacts);
   };
 
-  // takes user input and compares it to Last/Business name of all items in current contacts array
-  cb.searchContacts = function() {
-
-    var contacts = ContactBook.getContacts();
-    // store user value
-    var userSearch = searchEl.value;
-
-    if (!userSearch){
-      alert('Enter Valid Search Name');
-      return;
-    }
-
-    var firstLetter = userSearch[0].toLowerCase();
-    // settings up to search for first three letters of user's input against all "main names" in current contacts
-    var searchLetters = userSearch.slice(0, 3).toLowerCase();
-    console.log("firstLetter: ", firstLetter);
-    var letterGroup = (contacts[firstLetter]);
-
-    // Section for errors, should only hold 1 error is redefined any time there is an error (not +=)
-    var errorContent = "";
-
-    // results content for DOM div associated with letter
-    var containerElString = "";
-    // matching letter div
-    var letterEl = document.getElementById(firstLetter);
-
-    if (contacts[firstLetter]) {
-      for (var i = 0; i < letterGroup.length; i++) {
-          var name = (letterGroup[i].last_name || letterGroup[i].business);
-          if (name.toLowerCase().includes(searchLetters)) {
-            console.log("result found: ", name);
-            containerElString += `<div class="col-md-12">${name}</div>`;
-          }
-        }
-        // if (containerElString === "") {
-        //   containerElString += `<div class="col-md-12">No Results Found in ${firstLetter.toUpperCase()}</div>`;
-        //   console.log("No Results Found in Existing Letter");
-        // };
-      letterEl.classList.remove("hidden");
-      letterEl.innerHTML = containerElString;
-
-      // use refreshToolbar with optional argument firstLetter to only populate first letter Tab of string result
-      ContactBook.refreshToolbar(); // Removed optional parameter so the entire bar shows instead of the letter (easier to return to initial functionality state)
-      
-    // failure condition output
-    } else {
-      var error = `<div class="panel panel-default" id="errorDiv">
-                        <div class="panel-body">
-                          No Results Found for '${userSearch}'
-                        </div>
-                      </div>`;
-
-      console.log("No Results Found for First Letter");
-      // var containerEl = document.getElementById("container");
-      // errorSection.innerHTML = "";
-      console.log("errorSection: ", errorSection);
-      errorContent = error;
-    }
-  errorSection = document.getElementById("errorSection");
-  errorSection.innerHTML = errorContent;
-  searchEl.value = "";
-    
-  };   
-
-
-
-  return cb;
+return cb;  
   
 })(ContactBook);
 
