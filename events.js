@@ -53,6 +53,19 @@ submitButton.addEventListener("click", function(event) {
 		// Compares user input to business/last names and changes the DOM so only the associated letter and contact appears
   	ContactBook.searchContacts();
   	this.blur();
-		
+
 	}
 })
+
+//real time search
+searchEl.addEventListener("keyup", function(event){
+  ContactBook.hideAllLetterDivs();
+    // Compares user input to business/last names and changes the DOM so only the associated letter and contact appears
+  if (searchEl.value){
+    ContactBook.searchContacts(); 
+  } else {
+    ContactBook.refreshToolbar();
+  }
+})
+
+
